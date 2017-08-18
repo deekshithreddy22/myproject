@@ -5,7 +5,7 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 
-describe('getting customers', function() {
+describe('getting clients details', function() {
     it('should list  all clients on GET Request ',function(done) {
   chai.request(server)
     .get('/apis/customerinfo')
@@ -18,57 +18,116 @@ describe('getting customers', function() {
 });
 });
 
-describe('adding customers', function() {
-it('should add a customer to customers on  POST Request', function(done) {
-     chai.request(server)
-     .post('/addcustomerinfo')
-    .send({'Customer_name': 'Java', 'Age':18 , 'Gender':'male','Date_birth':'28/07/1996', 'Company_info':'berkadia','Adress_info':'kismathpur'})
-    .end(function(err, res){
+describe('adding clients', function() {
+it('should add a client to clients list on  POST Request', function(done) {
+            chai.request(server)
+              .get('/apis/customerinfo')
+              .end(function(err, res){
+      chai.request(server)
+      .post('/apis/addcustomerinfo')
+      .send({'Customer_name': 'Java', 'Age':18 , 'Gender':'male','Date_birth':'28/07/1996', 'Company_info':'berkadia','Adress_info':'kismathpur'})
+     .end(function(err, res){
       res.should.have.status(200);
       res.should.be.json;
-      res.body.should.have.property('Customer_name');
-      res.body.should.have.property('Age');
-      res.body.should.have.property('Gender');
-      res.body.should.have.property('Date_birth');
-      res.body.should.have.property('Company_info');
-      res.body.should.have.property('Adress_info');
+      res.body.should.be.a('object');
       done();
     });
 });
 });
 
-describe('update customer', () => {
-      it('it should UPDATE a customer with the  given id', (done) => {
-        let customer = new Customer({Customer_name: 'Rajesh', Age:18 , Gender:'male',Date_birth:'28/07/1996', Company_info:'berkadia',Adress_info:'kismathpur'})
-        customer.save((err, customer) => {
-                chai.request(server)
-                .put('/updatecustomerinfo' + customer.id)
+describe('update clients', () => {
+      it('it should UPDATE a client with the  given id', (done) => {
+              chai.request(server)
+              .get('/apis/customerinfo')
+              .end(function(err, res){
+                 chai.request(server)
+                .put('/apis/updatecustomerinfo/'+res.body[0]._id)
                 .send({Customer_name: 'Mahesh', Age:22 , Gender:'male',Date_birth:'28/07/1996', Company_info:'berkadia',Adress_info:'kismathpur'})
                 .end((err, res) => {
                     res.should.have.status(200);
+                    res.should.be.json
                     res.body.should.be.a('object');
-                    res.body.book.should.have.property('Customer_name').eql('Mahesh');
-                  done();
-                });
+                     done();
+            
           });
       });
   });
 
 
-  describe('delete customer', () => {
-      it('it should DELETE a customer with  given id', (done) => {
-        let customer = new Customer({Customer_name: 'Rajesh', Age:18 , Gender:'male',Date_birth:'28/07/1996', Company_info:'berkadia',Adress_info:'kismathpur'})
-        customer.save((err, customer) => {
+  describe('delete clients', () => {
+      it('it should DELETE the client with  given id', (done) => {
                 chai.request(server)
-                .delete('/deletecustomerinfo' + customer.id)
+                .get('/apis/customerinfo')
+                .end((err, res) => {
+                   chai.request(server)
+                .delete('/apis/deletecustomerinfo'+res.body[0]._id)
+                .end((err, res) => {
+                  done();
+                });
+          });
+      });
+
+ // employee related test case      
+  
+describe('getting employee details', function() {
+    it('should list  all employees on GET Request ',function(done) {
+  chai.request(server)
+    .get('/apis/employeeinfo')
+    .end(function(err, res){
+      res.should.have.status(200);
+      res.should.be.json;
+      res.body.should.be.a('array');
+      done();
+    });
+});
+});
+
+describe('adding employees', function() {
+it('should add a employee to employers list on  POST Request', function(done) {
+            chai.request(server)
+              .get('/apis/employeeinfo')
+              .end(function(err, res){
+      chai.request(server)
+      .post('/apis/addemployeeinfo')
+      .send({'Employee_name': 'Java', 'Age':18 , 'Gender':'male','Date_birth':'28/07/1996', 'Experience_info':'5','Adress_info':'kismathpur','Project_info':'movies project'})
+     .end(function(err, res){
+      res.should.have.status(200);
+      res.should.be.json;
+      res.body.should.be.a('object');
+      done();
+    });
+});
+});
+
+describe('update employee', () => {
+      it('it should UPDATE an employee with the  given id', (done) => {
+              chai.request(server)
+              .get('/apis/employeeinfo')
+              .end(function(err, res){
+                 chai.request(server)
+                .put('/apis/updateemployeeinfo/'+res.body[0]._id)
+                .send({'Employee_name': 'Java', 'Age':18 , 'Gender':'male','Date_birth':'28/07/1996', 'Experience_info':'5','Adress_info':'kismathpur','Project_info':'movies project'})
                 .end((err, res) => {
                     res.should.have.status(200);
+                    res.should.be.json
                     res.body.should.be.a('object');
-                    res.body.should.have.property('ok').eql(1);
-                    res.body.should.have.property('n').eql(1);
-                  done();
-                });
+                     done();
+            
           });
       });
   });
 
+
+  describe('delete employee', () => {
+      it('it should DELETE an employee with  given id', (done) => {
+                chai.request(server)
+                .get('/apis/employeeinfo')
+                .end((err, res) => {
+                   chai.request(server)
+                .delete('/apis/deleteemployeeinfo'+res.body[0]._id)
+                .end((err, res) => {
+                  done();
+                });
+          });
+      });
+  
