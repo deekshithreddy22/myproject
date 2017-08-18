@@ -1,0 +1,72 @@
+<div class="container">
+     <form (submit)="view()">
+      <p class="updated Customer_name">
+        <input name="name" type="text" [(ngModel)]="Customername" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="please enter updated customer name" id="name">
+      </p> 
+     </form> 
+</div> 
+       <div class="container">
+     <form (submit)="updateclient(id)">
+        <p class="Customer_name">
+        <input name="name" type="text" [(ngModel)]="Customer_name" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="please enter customer name" id="name">
+      </p>
+       <p class="Age">
+        <input name="name" type="text" [(ngModel)]="Age" class="validate[required,length[0,4]] feedback-input" id="Age" placeholder="pleass enter age">
+      </p>
+      <p class=" Gender">
+        <input name="name" type="text"  [(ngModel)]="Gender" class="validate[required,length[0,5]] feedback-input" id="Gender" placeholder="enter gender">
+      </p>
+       <p class=" Date_birth">
+        <input name="name" type="text" [(ngModel)]="Date_birth" class="validate[required,length[0,100]] feedback-input" id="Date_birth" placeholder="Date of birth">
+      </p>
+      <p class=" Company_info">
+        <input name="name" type="text" [(ngModel)]="Company_info" class="validate[required,length[0,100]] feedback-input" id="Company_info" placeholder="company">
+      </p>
+     <p class=" Adress_info">
+        <input name="name" type="text" [(ngModel)]="Adress_info" class="validate[required,length[0,100]] feedback-input" id="Adress_info" placeholder="Adress">
+      </p>
+        <input type="submit" value="Add" id="button-blue">
+      </form>
+      </div>
+
+<!--
+<form id="waterform" (submit)="view()">
+  <div class="formgroup" id="message-form">
+    <label for="name">Enter name of client to be updated</label>
+    <input type="text"  [(ngModel)]="customername" name="message">
+    <input type="submit" value="VIEW" />
+</div>
+
+
+<form id="waterform" (submit)="updateclient(id)">
+<div class="formgroup" id="name-form">
+    <label for="name">Customer Name</label>
+    <input type="text" [(ngModel)]="Customer_name" name="customername"  />
+</div>
+
+<div class="formgroup" id="name-form">
+    <label for="name">Age </label>
+    <input type="text" [(ngModel)]="Age" name="Age" />
+</div>
+
+<div class="formgroup" id="message-form">
+    <label for="name">Gender</label>
+    <input type="text" [(ngModel)]="Gender"  name="Gender" >
+</div>
+
+<div class="formgroup" id="message-form">
+    <label for="name">Date Of Birth</label>
+    <input type="number" [(ngModel)]="Date_birth" name="Date_birth" >
+</div>
+
+<div class="formgroup" id="message-form">
+    <label for="name">Company Info</label>
+    <input type="number" [(ngModel)]="Company_info" name="Company" >
+</div>
+
+<div class="formgroup" id="message-form">
+    <label for="name">Adress Info</label>
+    <input type="text" [(ngModel)]="Adress_info"  name="Adress" >
+</div>
+
+	<input type="submit" value="UPDATE" />-->

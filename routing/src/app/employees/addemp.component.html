@@ -1,0 +1,27 @@
+<div class="container">
+     <form (submit)="addEmployee()">
+       
+        <p class="Employeename">
+        <input name="name" type="text" [(ngModel)]="Employee_name" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="please enter employee name" id="name">
+      </p>
+       <p class="Age">
+        <input name="name" type="text" [(ngModel)]="Age" class="validate[required,length[0,4]] feedback-input" id="Age" placeholder="pleass enter age">
+      </p>
+      <p class=" Gender">
+        <input name="name" type="text"  [(ngModel)]="Gender" class="validate[required,length[0,5]] feedback-input" id="Gender" placeholder="enter gender">
+      </p>
+       <p class=" Date_birth">
+        <input name="name" type="text" [(ngModel)]="Date_birth" class="validate[required,length[0,100]] feedback-input" id="Date_birth" placeholder="Date of birth">
+      </p>
+      <p class=" Experience_info">
+        <input name="name" type="text" [(ngModel)]="Experience_info" class="validate[required,length[0,100]] feedback-input" id="Experience_info" placeholder="Experience">
+      </p>
+     <p class=" Adress_info">
+        <input name="name" type="text" [(ngModel)]="Adress_info" class="validate[required,length[0,100]] feedback-input" id="Adress_info" placeholder="Adress">
+      </p>
+      <p class=" Project_info">
+        <input name="name" type="text" [(ngModel)]="Project_info" class="validate[required,length[0,100]] feedback-input" id="Experience_info" placeholder="Project_info">
+      </p>
+        <input type="submit" value="Add"  id="button-blue">
+      </form>
+      </div>

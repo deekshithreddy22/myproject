@@ -1,0 +1,27 @@
+<div class="container">
+    <p class="filter3">
+        <input name="name" type="text" [(ngModel)]="search" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" style="padding-right:50px" placeholder="search actor name" id="filter3">
+      </p>
+    <div *ngFor="let employee of employees | filter2:search">
+        <table>>
+       <tr>
+         <td>  {{employee.Employee_name}}</td>
+        
+            <td>  {{employee.Age}}</td>
+      
+             <td>  {{employee.Gender}}</td>
+        
+           <td>  {{employee.Date_birth}}</td>
+
+          <td> {{employee.Experience_info}}</td>
+
+          <td> {{employee.Adress_info}}</td>
+
+          <td> {{employee.Project_info}}</td>
+        </tr>
+         </table><br>
+         </div>
+          
+        </div>
+
+        

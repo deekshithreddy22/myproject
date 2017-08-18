@@ -1,0 +1,25 @@
+<div class="container">
+     <p class="filter3">
+        <input name="name" type="text" [(ngModel)]="search" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" style="padding-right:50px" placeholder="search customer name" id="filter3">
+      </p>
+    <div *ngFor="let customer of customers | filter3:search">
+        <table>>
+        
+          <td> {{customer.Employee_name}}</td>
+        
+            <td> {{customer.Age}}</td>
+      
+             <td> {{customer.Gender}}</td>
+        
+            <td>{{customer.Date_birth}}</td>
+
+          <td>{{customer.Company_info}}</td>
+
+          <td> {{customer.Adress_info}}</td>
+
+         </table>
+          <div>
+                <input class="btn btn-primary|secondary|success|info|warning|danger" type="button" value="delete" (click)="deleteCustomer(customer._id)">
+          </div><br><hr>
+      </div>
+</div>

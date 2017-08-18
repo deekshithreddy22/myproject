@@ -1,0 +1,16 @@
+<div>
+    <button (click)="logoutt()" 
+   class="btn waves-effect waves-light" 
+   type="submit" name="action" style="position: absolute; top: 8px;  right: 16px; font-size: 18px;">Logout</button>
+</div>
+<nav>
+<table cellpadding="5" cellspacing="5">
+<tr>
+   <td><a routerLink="./viewclients">VIEW CLIENTS</a></td>
+   <td><a routerLink="./addclients">ADD CLIENT</a></td>
+   <td><a routerLink="./deleteclients">DELETE CLIENT</a></td>
+  <td><a routerLink="./updateclients">UPDATE CLIENT</a></td>
+</tr>
+</table>
+ </nav>
+    <router-outlet></router-outlet>
